@@ -1,8 +1,12 @@
+import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from pathlib import Path
 
-BASE_URL = "https://api.elections.kalshi.com/trade-api/v2"
+BASE_URL = os.getenv(
+    "KALSHI_BASE_URL",
+    "https://demo-api.kalshi.co/trade-api/v2",
+)
 
 SERIES_TICKER = "KXRATECUTCOUNT"
 EVENT_TICKER = "KXRATECUTCOUNT-26DEC31"
