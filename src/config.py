@@ -20,6 +20,9 @@ EASTERN = ZoneInfo("America/New_York")
 # We use 2:00 PM ET as the expected FOMC statement/release time.
 EVENT_TIME = datetime(2026, 4, 29, 14, 0, tzinfo=EASTERN)
 
+# Secondary event anchor: Fed press conference start.
+PRESS_CONFERENCE_TIME = datetime(2026, 4, 29, 14, 30, tzinfo=EASTERN)
+
 # Broad window used for the chart/data pull.
 START_TIME = datetime(2026, 4, 29, 9, 0, tzinfo=EASTERN)
 END_TIME = datetime(2026, 4, 30, 9, 0, tzinfo=EASTERN)
