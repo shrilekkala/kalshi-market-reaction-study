@@ -1,0 +1,2 @@
+event_time_et,window_hours,price_2h_before_start_cents,price_just_before_cents,price_just_after_cents,price_2h_after_end_cents,pre_event_move_cents,post_event_move_cents,volume_before,volume_after,volume_ratio_after_before,avg_spread_before_cents,avg_spread_after_cents
+2026-04-29T14:00:00-04:00,2,,,29.500000000000004,29.500000000000004,,0.0,0.0,2.0,,,2.9999999999999973

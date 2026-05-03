@@ -1,0 +1,2 @@
+ticker,title,subtitle,status,last_price_dollars,yes_bid_dollars,yes_ask_dollars,no_bid_dollars,no_ask_dollars,volume_fp,volume_24h_fp,open_interest_fp,close_time,rules_primary
+KXRATECUTCOUNT-26DEC31-T0,Will the Fed cut rates 0 times?,0:: 0 bps,active,0.5500,0.5390,0.5500,0.4500,0.4610,865126.17,5005.17,338150.51,2027-01-01T04:59:00Z,"If the Fed cuts 0 times starting Jan 1, 2026 and before 2027, then the market resolves to Yes."
