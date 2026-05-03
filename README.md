@@ -158,7 +158,7 @@ The main price series is the **YES bid/ask midpoint**:
 midpoint = (YES bid + YES ask) / 2
 ```
 
-I used the midpoint because many one-minute candlesticks (only 76 out of the 336 in production data) do not contain an executed trade. The bid and ask quotes still provide information about how the market was pricing the contract, even when no trade occurred.
+I used the midpoint because many one-minute candlesticks do not contain an executed trade. In the production run, only 76 of the 336 returned candlesticks had an executed trade_close value. Because of that, using only trade prices would have produced a sparse chart. The bid and ask quotes still provide information about how the market was pricing the contract, even when no trade occurred.
 
 The project also tracks:
 
@@ -213,6 +213,10 @@ The richer production-market-data run returned 336 candlesticks for the selected
 
 ### Market activity
 
+![YES midpoint around Fed decision](outputs/production/price_reaction.png)
+
+![Trading volume around Fed decision](outputs/production/volume_reaction.png)
+
 In the two-hour window before the 2:00 PM Fed decision timestamp:
 
 - YES midpoint moved from **51.5¢** to **54.7¢**
@@ -231,6 +235,8 @@ The price chart also shows a temporary post-event spike around the press confere
 
 ### Liquidity and execution
 
+![Current order book depth](outputs/production/orderbook_depth.png)
+
 At run time, the production order book showed:
 
 - best YES bid: **53.90¢**
@@ -239,6 +245,9 @@ At run time, the production order book showed:
 - midpoint: **54.45¢**
 - total YES bid depth: **71,929.70** contracts
 - total implied YES ask depth: **32,668.21** contracts
+
+![Simulated buy-side slippage](outputs/production/slippage_by_size.png)
+
 
 The slippage simulation showed:
 
@@ -261,7 +270,7 @@ This suggests the market was tradable for small buy orders, but larger orders wo
 - It also marks **2:30 PM ET** as the press conference start.
 - The main price series is the bid/ask midpoint, not always an executed trade price.
 - The production event analysis uses public production market data because sandbox historical activity was sparse.
-- The order book analysis uses a current snapshot at run time, not historical order book snapshots from the event window.
+- The order book analysis uses a current snapshot from the time the script is run, not historical order book snapshots from the event window.
 - The project does not claim that the Fed decision alone caused the observed price movement.
 - The analysis focuses on one market. Related markets such as exactly 1 cut, 2 cuts, or 3 cuts could be compared in a larger version.
 
@@ -318,8 +327,9 @@ With more time, I would extend this in several ways:
 
 1. Compare multiple related markets under the same event, such as exactly 0 cuts, 1 cut, 2 cuts, and 3 cuts, to estimate how the full rate-cut distribution shifted.
 2. Compare Kalshi prices with more external reference signals such as Fed funds futures, macro forecasts, or news timestamps.
-3. Capture historical order book snapshots where available, instead of using only the current order book.
+3. Capture order book snapshots over time in a live process, or use historical depth data if available, instead of relying only on the current order book.
 4. Create a small dashboard or CLI arguments so users can select different markets and event windows.
+
 ---
 
 
