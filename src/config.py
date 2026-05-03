@@ -30,4 +30,5 @@ END_TIME = datetime(2026, 4, 30, 9, 0, tzinfo=EASTERN)
 # Before/after window used for summary metrics.
 REACTION_WINDOW_HOURS = 2
 
-OUTPUT_DIR = Path("outputs")
+ENVIRONMENT_NAME = os.getenv("KALSHI_ENVIRONMENT_NAME", "sandbox")
+OUTPUT_DIR = Path("outputs") / ENVIRONMENT_NAME
